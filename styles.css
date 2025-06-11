@@ -1,0 +1,508 @@
+:root {
+    --bg: #0f0f0f;
+    --text: #ffffff;
+    --accent: #00ffd5;
+    --card: rgba(255, 255, 255, 0.1);
+    --accent-hover: #009975;
+}
+
+[data-theme="light"] {
+    --bg: #f9f9f9;
+    --text: #333333;
+    --accent: #3498db;
+    --card: #ffffff;
+    --accent-hover: #2c3e50;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: all 0.3s ease;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5vw;
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    /* This transition helps with responsive changes */
+    transition: all 0.3s ease;
+}
+
+.logo {
+    color: var(--accent);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    padding-right: 2rem;
+    /* Allow nav links to wrap onto multiple lines */
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    /* Keep them right-aligned on larger screens */
+    transition: all 0.3s ease;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+.hero {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: linear-gradient(to bottom, var(--bg), transparent);
+    transition: all 0.3s ease;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+}
+
+.hero span {
+    color: var(--accent);
+}
+
+.hero p {
+    margin: 1rem 0 2rem;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    background: var(--accent);
+    color: #000;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* Base section padding and scroll-margin-top for sticky header */
+section {
+    padding: 4rem 10vw;
+    /* Default padding for sections */
+    /* Add scroll-margin-top to account for the sticky nav's height */
+    /* Adjust this value if your nav's height changes */
+    scroll-margin-top: 6rem;
+    /* A good estimate, fine-tune if needed */
+    transition: all 0.3s ease;
+}
+
+/* Adjusted padding for specific sections */
+#about,
+#skills {
+    padding-top: 2rem;
+    /* Reduced top padding */
+    padding-bottom: 2rem;
+    /* Reduced bottom padding */
+    /* Horizontal padding remains 10vw, adjusted via media queries below */
+}
+
+
+.skill-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.skill-box {
+    background: var(--card);
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+    transform: perspective(500px) rotateX(0deg);
+}
+
+.skill-box:hover {
+    transform: perspective(500px) rotateX(8deg);
+    background: var(--accent);
+    color: #000;
+}
+
+.experience-block {
+    background: var(--card);
+    margin: 1rem 0;
+    padding: 1rem;
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.experience-block:hover {
+    transform: translateX(10px);
+    background: var(--accent);
+    color: #000;
+}
+
+#education div {
+    background: var(--card);
+    padding: 1rem;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+#education div:hover {
+    transform: scale(1.05);
+    background: var(--accent);
+    color: #000;
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.cert-card {
+    background: var(--card);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: 0.4s;
+    transform: perspective(600px) rotateY(0deg);
+}
+
+.cert-card:hover {
+    transform: perspective(600px) rotateY(10deg);
+    background: var(--accent);
+    color: #000;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    background: var(--bg);
+    font-size: 0.9rem;
+}
+
+.bg-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at 30% 30%, rgba(0, 255, 213, 0.2), transparent 40%),
+        radial-gradient(circle at 70% 70%, rgba(255, 0, 153, 0.2), transparent 40%);
+    animation: moveBackground 20s infinite ease-in-out;
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 30% 30%, 70% 70%;
+    }
+
+    50% {
+        background-position: 40% 60%, 60% 40%;
+    }
+
+    100% {
+        background-position: 30% 30%, 70% 70%;
+    }
+}
+
+#typing {
+    color: var(--accent);
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1000;
+    color: var(--accent);
+    background-color: var(--card);
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle i {
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+/* Styling for the email link in contact section */
+#contact div {
+    text-align: center;
+    /* Center the email and icon */
+    margin-top: 1.5rem;
+    /* Add some space below the heading */
+    padding: 1rem;
+    /* Add some padding to the container */
+    background: var(--card);
+    /* Match card background */
+    border-radius: 10px;
+    /* Match other rounded elements */
+    display: inline-flex;
+    /* Use inline-flex to keep content together and allow centering */
+    align-items: center;
+    justify-content: center;
+    /* Center horizontally if inline-flex */
+    gap: 0.5rem;
+    /* Space between icon and text */
+    max-width: max-content;
+    /* Make the background only as wide as its content */
+    margin-left: auto;
+    /* Center the div itself */
+    margin-right: auto;
+    /* Center the div itself */
+    transition: all 0.3s ease;
+}
+
+#contact div a {
+    color: var(--text);
+    /* Ensure link color matches text */
+    text-decoration: none;
+    /* Remove underline */
+}
+
+#contact div a:hover {
+    color: var(--accent);
+    /* Hover effect for the email link */
+}
+
+
+/* --------------------------------------------------- */
+/* RESPONSIVE STYLES                  */
+/* --------------------------------------------------- */
+
+/* Media Query for Tablets and Smaller Desktops (Max-width: 768px) */
+@media (max-width: 768px) {
+
+    /* Adjust navigation for smaller screens */
+    nav {
+        flex-direction: column;
+        /* Stack logo and nav links vertically */
+        align-items: center;
+        /* Center items horizontally */
+        padding: 1rem 2vw;
+        /* Reduce horizontal padding for smaller screens */
+    }
+
+    .logo {
+        margin-bottom: 0.5rem;
+        /* Add space below logo when stacked */
+    }
+
+    .nav-links {
+        justify-content: center;
+        /* Center links horizontally */
+        padding-right: 0;
+        /* Remove right padding */
+        gap: 1rem;
+        /* Reduce gap between links */
+        margin-top: 0.5rem;
+        /* Space between logo and links */
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
+        /* Slightly smaller font for nav links */
+        padding: 0.2rem 0.5rem;
+        /* Add some padding to make them easier to tap */
+    }
+
+    /* Adjust hero section for smaller screens */
+    .hero {
+        padding: 3rem 1rem;
+        /* Reduce overall padding */
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+        /* Smaller heading */
+    }
+
+    #typing {
+        font-size: 2rem;
+        /* Match hero h1 */
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+        /* Smaller paragraph text */
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        /* Stack buttons vertically */
+        gap: 0.8rem;
+        /* Smaller gap */
+        width: 100%;
+        /* Take full width of parent */
+        max-width: 300px;
+        /* Limit button width for better appearance */
+        margin: auto;
+        /* Center the button container */
+    }
+
+    .btn {
+        width: 100%;
+        /* Make buttons full width within their container */
+    }
+
+
+    /* Adjust section padding for smaller screens */
+    section {
+        padding: 2.5rem 5vw;
+        /* Reduced overall padding for sections */
+        scroll-margin-top: 5rem;
+        /* Slightly reduce scroll margin top for less space */
+    }
+
+    /* Maintain specific padding adjustments for about and skills, adjusting for new overall section padding */
+    #about,
+    #skills {
+        padding-top: 1.5rem;
+        /* Further reduced top padding for these sections */
+        padding-bottom: 1.5rem;
+        /* Further reduced bottom padding for these sections */
+        padding-left: 5vw;
+        /* Match general section horizontal padding */
+        padding-right: 5vw;
+        /* Match general section horizontal padding */
+    }
+
+    /* Adjust skill grid and cert grid columns to allow smaller min width */
+    .skill-list,
+    .cert-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        /* Allow items to be smaller */
+        gap: 0.8rem;
+    }
+
+    .skill-box,
+    .cert-card {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    /* Adjust contact email display for smaller screens */
+    #contact div {
+        font-size: 1rem;
+        /* Slightly smaller font for email */
+        padding: 0.8rem;
+    }
+
+    /* Adjust theme toggle position and size */
+    .theme-toggle {
+        top: 1rem;
+        /* Move toggle up slightly */
+        right: 1rem;
+        /* Move toggle in slightly */
+        font-size: 1.2rem;
+        padding: 0.4rem;
+    }
+}
+
+/* Media Query for Small Mobile Devices (Max-width: 480px) */
+@media (max-width: 480px) {
+    .nav-links {
+        gap: 0.5rem;
+        /* Even smaller gap for nav links */
+    }
+
+    .nav-links a {
+        font-size: 0.8rem;
+        /* Even smaller font */
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+        /* Even smaller heading */
+    }
+
+    #typing {
+        font-size: 1.8rem;
+        /* Match hero h1 */
+    }
+
+    .hero p {
+        font-size: 0.8rem;
+        /* Even smaller paragraph text */
+    }
+
+    section {
+        padding: 2rem 4vw;
+        /* Even more reduced section padding */
+        scroll-margin-top: 4.5rem;
+        /* Further reduce scroll margin top */
+    }
+
+    #about,
+    #skills {
+        padding-top: 1rem;
+        /* Minimum top padding */
+        padding-bottom: 1rem;
+        /* Minimum bottom padding */
+        padding-left: 4vw;
+        /* Match general section horizontal padding */
+        padding-right: 4vw;
+        /* Match general section horizontal padding */
+    }
+
+    /* On very small screens, stack skill boxes and cert cards completely */
+    .skill-list,
+    .cert-grid {
+        grid-template-columns: 1fr;
+        /* Force single column layout */
+        gap: 1rem;
+        /* Revert gap slightly for better spacing when stacked */
+    }
+
+    .skill-box,
+    .cert-card {
+        padding: 1rem;
+        /* Adjust padding when stacked for better appearance */
+        font-size: 1rem;
+        /* Adjust font size when stacked */
+    }
+
+    .theme-toggle {
+        font-size: 1rem;
+        padding: 0.3rem;
+    }
+}
